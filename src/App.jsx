@@ -101,7 +101,7 @@ function AppInner() {
                 💎
               </div>
               <div>
-                <div className="app-logo-name" style={{ color: T.text }}>FinAI</div>
+                <div className="app-logo-name" style={{ color: T.text }}>AI-FinTech</div>
                 <div className="app-logo-sub" style={{ color: T.textMuted }}>Health Planner</div>
               </div>
             </div>
@@ -147,7 +147,7 @@ function AppInner() {
             <ThemeToggle />
             <div className="app-footer-tagline" style={{ color: T.textMuted }}>
               AI-Driven FinTech Platform<br />
-              <span className="app-footer-brand" style={{ color: T.teal }}>Powered by Claude AI</span>
+              <span className="app-footer-brand" style={{ color: T.teal }}>Powered by Ashish and Team's</span>
             </div>
           </div>
         </div>
