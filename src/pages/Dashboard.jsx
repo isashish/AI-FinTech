@@ -47,7 +47,7 @@ export default function Dashboard({ profile, goals }) {
         <div className="db-hero-overlay" style={{ background: `linear-gradient(110deg,${T.teal}ee 0%,${T.blue}bb 55%,transparent 100%)` }} />
         <div className="db-hero-body">
           <div>
-            <div className="db-hero-greeting">Good Morning 👋</div>
+            <div className="db-hero-greeting">Track Your Financial Health 💰</div>
             <div className="db-hero-title">
               Your Financial<br /><span>Health Dashboard</span>
             </div>
