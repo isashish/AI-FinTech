@@ -7,6 +7,10 @@ import Investment from './pages/Investment';
 import Debt       from './pages/Debt';
 import WhatIf     from './pages/WhatIf';
 import Chatbot    from './pages/Chatbot';
+import Landing    from './pages/Landing';
+import Login      from './pages/Login';
+import Signup     from './pages/Signup';
+
 import { calcHealth } from './utils.jsx';
 
 const NAV = [
@@ -39,6 +43,7 @@ function ThemeToggle() {
 
 function AppInner() {
   const { T, isDark } = useTheme();
+  const [screen, setScreen] = useState('landing');
   const [page,        setPage]        = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profile, setProfile] = useState({
@@ -54,6 +59,23 @@ function AppInner() {
   const score      = calcHealth(profile);
   const scoreColor = score >= 75 ? T.teal : score >= 50 ? T.amber : T.rose;
   const navigate   = id => { setPage(id); setSidebarOpen(false); };
+
+  const globalStyle = `body { background: ${T.bg}; color: ${T.text}; }`;
+
+  if (screen === 'landing') return (
+    <><style>{globalStyle}</style>
+    <Landing onLogin={() => setScreen('login')} onSignup={() => setScreen('signup')} /></>
+  );
+
+  if (screen === 'login') return (
+    <><style>{globalStyle}</style>
+    <Login onLogin={() => setScreen('app')} onGoSignup={() => setScreen('signup')} onGoLanding={() => setScreen('landing')} /></>
+  );
+
+  if (screen === 'signup') return (
+    <><style>{globalStyle}</style>
+    <Signup onSignup={() => setScreen('app')} onGoLogin={() => setScreen('login')} onGoLanding={() => setScreen('landing')} /></>
+  );
 
   const pages = {
     dashboard:  <Dashboard  profile={profile} goals={goals} />,
