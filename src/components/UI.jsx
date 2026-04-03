@@ -76,30 +76,77 @@ export function RangeInput({ label, min, max, step = 1, value, onChange, format 
   );
 }
 
-export function Input({ label, value, onChange, prefix = '₹', type = 'number' }) {
+export function Input({ label, value, onChange, prefix = '₹' }) {
   const { T } = useTheme();
   const [foc, setFoc] = useState(false);
+
+  const handleChange = (e) => {
+    const raw = e.target.value.replace(/\D/g, ""); // allow only numbers
+    onChange(raw === "" ? 0 : Number(raw));
+  };
+
   return (
     <div style={{ marginBottom: 14 }}>
-      <label style={{ display: 'block', fontSize: 12, color: T.textMuted, marginBottom: 6, fontWeight: 600, letterSpacing: 0.3 }}>{label}</label>
-      <div style={{
-        display: 'flex', alignItems: 'center', background: foc ? T.blueLight : T.inputBg,
-        border: `1.5px solid ${foc ? T.blue : T.border}`, borderRadius: 10, overflow: 'hidden', transition: 'all 0.2s',
-      }}>
-        {prefix && <span style={{ padding: '0 12px', color: T.textMuted, fontSize: 13, fontWeight: 600 }}>{prefix}</span>}
-        <input type={type} value={value}
-          onChange={e => onChange(type === 'number' ? Number(e.target.value) : e.target.value)}
-          onFocus={() => setFoc(true)} onBlur={() => setFoc(false)}
+      <label
+        style={{
+          display: 'block',
+          fontSize: 12,
+          color: T.textMuted,
+          marginBottom: 6,
+          fontWeight: 600,
+          letterSpacing: 0.3
+        }}
+      >
+        {label}
+      </label>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          background: foc ? T.blueLight : T.inputBg,
+          border: `1.5px solid ${foc ? T.blue : T.border}`,
+          borderRadius: 10,
+          overflow: 'hidden',
+          transition: 'all 0.2s'
+        }}
+      >
+        {prefix && (
+          <span
+            style={{
+              padding: '0 12px',
+              color: T.textMuted,
+              fontSize: 13,
+              fontWeight: 600
+            }}
+          >
+            {prefix}
+          </span>
+        )}
+
+        <input
+          type="text"                // 👈 changed from number
+          inputMode="numeric"        // 👈 mobile numeric keyboard
+          value={value}
+          onChange={handleChange}
+          onFocus={() => setFoc(true)}
+          onBlur={() => setFoc(false)}
           style={{
-            flex: 1, background: 'transparent', border: 'none', outline: 'none',
-            color: T.text, padding: '11px 12px 11px 0', fontSize: 14,
-            fontFamily: "'JetBrains Mono',monospace", fontWeight: 600,
-          }} />
+            flex: 1,
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            color: T.text,
+            padding: '11px 12px 11px 0',
+            fontSize: 14,
+            fontFamily: "'JetBrains Mono', monospace",
+            fontWeight: 600
+          }}
+        />
       </div>
     </div>
   );
 }
-
 export function ScoreRing({ score }) {
   const { T } = useTheme();
   const r = 58, circ = 2 * Math.PI * r, dash = (score / 100) * circ;
