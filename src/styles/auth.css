@@ -16,6 +16,17 @@
   padding: 32px 16px;
 }
 
+
+/* ===== Gradient Text (Fixed Glitch) ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
 /* ── Auth Card ── */
 .auth-card {
   width: 100%;
@@ -137,9 +148,9 @@
 .auth-btn-primary {
   border: none;
   border-radius: 12px;
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: 800;
+  padding: 12px 17px;
+  font-size: 12px;
+  font-weight: 700;
   color: #fff;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
@@ -154,9 +165,9 @@
 
 .auth-btn-ghost {
   border-radius: 12px;
-  padding: 11px 22px;
-  font-size: 14px;
-  font-weight: 700;
+  padding: 11px 25px;
+  font-size: 12px;
+  font-weight: 600;
   background: transparent;
   cursor: pointer;
   transition: background 0.15s, transform 0.15s;
@@ -172,6 +183,13 @@
 
 .auth-btn-full { width: 100%; margin-top: 4px; }
 .auth-btn-lg { padding: 14px 28px; font-size: 15px; }
+
+/* ===== Navbar Button Fix ===== */
+.landing-nav-actions .auth-btn-primary,
+.landing-nav-actions .auth-btn-ghost {
+  padding: 8px 16px;
+  font-size: 13px;
+}
 
 /* ── Divider ── */
 .auth-divider {
@@ -292,20 +310,68 @@
 @media (max-width: 600px) {
 
   .landing-nav-actions {
-    display: none;  /* Hide buttons */
+    display: none;
     width: 100%;
     flex-direction: column;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 14px;
   }
 
   .landing-nav-actions.active {
-    display: flex; /* Show when toggled */
+    display: flex;
   }
 
   .landing-menu-toggle {
-    display: block; /* Show hamburger */
+    display: block;
+    background: transparent;
+    border: none;
   }
+
+  /* Make mobile buttons full width */
+  .landing-nav-actions .auth-btn-primary,
+  .landing-nav-actions .auth-btn-ghost,
+  .landing-nav-actions .app-theme-btn {
+    width: 100%;
+  }
+
 }
+
+/* Theme Toggle Button */
+/* ===== Theme Toggle ===== */
+.app-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  justify-content: center;
+  border-width: 1.5px;
+  border-style: solid;
+  width: auto; /* FIXED */
+}
+.app-theme-track {
+  width: 32px; height: 18px;
+  border-radius: 9px;
+  position: relative;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+.app-theme-knob {
+  position: absolute;
+  top: 3px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  transition: left 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.app-theme-label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
 
 /* ── Hero ── */
 .landing-hero {
