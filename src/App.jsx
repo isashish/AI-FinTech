@@ -46,7 +46,7 @@ function ThemeToggle() {
 function AppInner() {
   const { T, isDark } = useTheme();
   const [screen, setScreen] = useState('landing');
-  const [page,        setPage]        = useState('dashboard');
+  const [page,        setPage]        = useState('profile');
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profile, setProfile] = useState({
     income: 80000, expenses: 35000, savings: 15000,
