@@ -143,15 +143,71 @@
   .db-goals-grid        { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 }
 @media (max-width: 640px) {
-  .db-hero              { height: 140px; border-radius: 16px; }
-  .db-hero-body         { padding: 0 16px; gap: 10px; flex-wrap: wrap; }
-  .db-hero-title        { font-size: 20px; }
-  .db-hero-right        { margin-left: 0; gap: 14px; }
-  .db-hero-score-num    { font-size: 32px; }
-  .db-hero-surplus-num  { font-size: 18px; }
-  .db-hero-divider      { height: 44px; }
-  .db-stats             { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .db-goals-grid        { grid-template-columns: 1fr; }
+
+  .db-hero {
+    height: 180px;
+    min-height: 170px;
+    border-radius: 18px;
+    padding: 0;
+  }
+
+  .db-hero-body {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: nowrap; /* IMPORTANT */
+  }
+
+  /* LEFT SIDE */
+  .db-hero-left {
+    flex: 1;
+    min-width: 0; /* prevents overflow */
+  }
+
+  .db-hero-top-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .db-hero-title {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .db-hero-title span {
+    display: block; /* Health Dashboard below */
+  }
+
+  /* RIGHT SIDE */
+  .db-hero-right {
+    display: flex;
+    align-items: center;
+    gap: 14px; /* reduce spacing */
+  }
+
+  .db-hero-score,
+  .db-hero-surplus {
+    text-align: center;
+  }
+
+  .db-hero-score-num {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .db-hero-surplus-num {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .db-hero-divider {
+    height: 36px;
+    width: 1px;
+    opacity: 0.4;
+  }
 }
 @media (max-width: 400px) {
   .db-hero              { height: 120px; }

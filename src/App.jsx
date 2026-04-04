@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider, useTheme } from './context/ThemeContext.jsx';
+import MobileNavbar from './components/MobileNavbar';
+
 import Dashboard  from './pages/Dashboard';
 import Profile    from './pages/Profile';
 import Goals      from './pages/Goals';
@@ -98,14 +100,11 @@ function AppInner() {
         select option { background: ${T.surface}; color: ${T.text}; }
       `}</style>
 
-      <button
-        className="app-menu-btn"
-        onClick={() => setSidebarOpen(o => !o)}
-        style={{ color: T.text, background: T.surface, borderColor: T.border }}
-        aria-label="Toggle menu"
-      >
-        {sidebarOpen ? '✕' : '☰'}
-      </button>
+     
+      <MobileNavbar
+        toggleSidebar={() => setSidebarOpen(o => !o)}
+        T={T}
+      />
 
       <div className={`app-overlay ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)} />
 
